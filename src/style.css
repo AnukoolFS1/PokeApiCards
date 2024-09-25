@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: black;
+}
+
+.base-card {
+    padding: 10px 15px 10px 10px;
+    background-color: yellow;
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    gap: 20px;
+    color: white;
+    font-family: calibri;
+}
+
+.card {
+    flex: 1 1 14rem;
+    background-color: #065f2e;
+    box-shadow: 1px 1px 10px #00000050;
+    border-radius: 10px;
+}
+
+.img-base {
+    display: flex;
+    overflow-x: hidden;
+}
+
+.img {
+    flex: 1 1 14rem;
+    width: 20rem;
+    object-fit: cover;
+    background-color: yellowgreen;
+    border-radius: 9px 9px 2px 2px;
+}
+
+.details {
+    padding: 20px;
+}
+
+.pokeDetails {
+    font-weight: 100;
+    color: lime;
+}
+
+.details>h1 {
+    text-transform: uppercase;
+}
