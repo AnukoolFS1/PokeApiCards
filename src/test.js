@@ -1,7 +1,5 @@
-let regex = /pic/
+let arr1 = [1,2,3,4,5,6]
 
-let arr = [{name:'balbasaur'},{name:'pickachu'}]
+let arr2 = arr1.concat([7,8,9,0])
 
-arr = arr.filter(e => regex.test(e.name))
-
-console.log(arr)
+console.log(arr2)

@@ -1,27 +1,24 @@
 import { useState, useEffect } from 'react';
 import Card from './Card';
+import SearchBar from './searchBar';
 import './style.css'
 
 const App = () => {
     const [pokemons, setPokemons] = useState([])
     const [data, setData] = useState([]);
-    const [search, setSearch] = useState('');
 
-
-    const searchBar = (e) => {
-        setSearch(new RegExp(`${(e.target.value).toLowerCase()}`));
-        if(e.target.value.length === 0){
-            setData(pokemons)
+    async function next(api) {
+        if (!api.next) {
+            return []
         }
+
+        const res = await fetch(api.next)
+        const result = await res.json()
+        setPokemons(prev => prev.concat(result.results))
+
+        return next(result)
     }
 
-    const submitSearch = () => {
-        setData(() => {
-            return pokemons.filter(e => {
-                return search.test(e.name)
-            })
-        })
-    }
 
     useEffect(() => {
         try {
@@ -29,6 +26,7 @@ const App = () => {
                 const res = await fetch('https://pokeapi.co/api/v2/pokemon/');
                 const result = await res.json();
                 setPokemons(result.results)
+                next(result)
             }
             fetchData()
         }
@@ -42,10 +40,7 @@ const App = () => {
     }, [pokemons])
     return (
         <div>
-            <div className='searchBase'>
-                <input type="text" className='search' onChange={searchBar} />
-                <button onClick={submitSearch} className='button'>Search</button>
-            </div>
+            <SearchBar pokemons={pokemons} data={data} setData={setData} />
             <div className='base-card'>
                 {data.map(pokemon => {
 
