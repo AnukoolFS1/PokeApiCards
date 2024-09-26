@@ -86,3 +86,26 @@ body{
 .details>h1 {
     text-transform: uppercase;
 }
+
+.paginators{
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px 5px;
+    background-color: brown;
+    color: white;
+    cursor: pointer;
+    /* font-size: 20px; */
+    font: 20px 700;
+}
+
+.view{
+    position: fixed;
+    width: 5vw;
+    bottom: 20%;
+    background-color: slateblue;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    right: 0;
+    white-space: wrap;
+}

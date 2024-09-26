@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react'
-const SearchBar = ({pokemons, data, setData}) => {
+const SearchBar = ({pokemons, loading, setData}) => {
     const [search, setSearch] = useState('');
 
 
@@ -21,7 +21,7 @@ const SearchBar = ({pokemons, data, setData}) => {
     return (
         <div className='searchBase'>
             <input type="text" className='search' onChange={searchBar} />
-            <button onClick={submitSearch} className='button'>Search</button>
+            <button onClick={submitSearch} className='button'>{loading?'loading...': `Search`}</button>
         </div>
     )
 }
