@@ -9,7 +9,7 @@ const App = () => {
 
 
     const searchBar = (e) => {
-        setSearch(new RegExp(`${e.target.value}`));
+        setSearch(new RegExp(`${(e.target.value).toLowerCase()}`));
     }
 
     const submitSearch = () => {

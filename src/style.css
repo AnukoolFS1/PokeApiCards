@@ -34,13 +34,13 @@ body{
 }
 
 .button{
-    background-color: chartreuse;
-    color: black;
-    /* padding: .98rem 3rem; */
+    background-color: yellowgreen;
+    color: white;
+    padding: 0rem 2rem;
     border: none;
     font-size: 1.2rem;
     font-weight: 800;
-    flex: .5 1 30%;
+    flex: .5 1 10%;
 }
 
 .base-card {
@@ -56,7 +56,6 @@ body{
 
 .card {
     flex: 0 1 10vw;
-    /* width: 30vw; */
     background-color: #065f2e;
     box-shadow: 1px 1px 10px #00000050;
     border-radius: 10px;
