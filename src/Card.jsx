@@ -10,7 +10,7 @@ const Card = ({ url }) => {
         if(!word){
             let firstletter = ''
             return firstletter.toUpperCase() + word.slice(1)
-        }else{
+        }else{ 
             let firstletter = word[0]
             return firstletter.toUpperCase() + word.slice(1)
         }

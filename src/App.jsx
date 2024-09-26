@@ -3,14 +3,31 @@ import Card from './Card';
 import './style.css'
 
 const App = () => {
-    const [data, setData] = useState([])
+    const [pokemons, setPokemons] = useState([])
+    const [data, setData] = useState([]);
+    const [search, setSearch] = useState('');
+
+
+    const searchBar = (e) => {
+        setSearch(new RegExp(`${e.target.value}`));
+    }
+
+    const submitSearch = () => {
+        setData(() => {
+            return pokemons.filter(e => {
+                return search.test(e.name)
+            })
+        })
+        console.log(data)
+        console.log(search)
+    }
 
     useEffect(() => {
         try {
             async function fetchData() {
                 const res = await fetch('https://pokeapi.co/api/v2/pokemon/');
                 const result = await res.json();
-                setData(result.results)
+                setPokemons(result.results)
             }
             fetchData()
         }
@@ -18,13 +35,24 @@ const App = () => {
             console.log(err)
         }
     }, [])
+
+    useEffect(()=>{
+        setData(pokemons)
+    }, [pokemons])
     return (
-        <div className='base-card'>
-            {data?.map((pokemon, index) => {
-                return (
-                    <Card key={index} url={pokemon.url} />
-                )
-            })}
+        <div>
+            <div className='searchBase'>
+                <input type="text" className='search' onChange={searchBar} />
+                <button onClick={submitSearch} className='button'>Search</button>
+            </div>
+            <div className='base-card'>
+                {data.map(pokemon => {
+                    
+                    return (
+                        <Card key={pokemon.url} url={pokemon.url} />
+                    )
+                })}
+            </div>
         </div>
     )
 }
