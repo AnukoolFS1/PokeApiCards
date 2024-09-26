@@ -1,17 +1,14 @@
+import React from 'react';
+
 const Testing = () => {
+    const [data, setData] = React.useState({ name: 'anukool' })
 
-    function div(a){
-        return (<div>{a} asdfas</div>)
+    function change(){
+        setData(prev => {return {...prev,name:'anuk'}})
     }
-
-
-    function loop(x){
-            return `<div>h1</div>`
-    }
-
     return (<>
-    {
-    }
+        <h1>{data.name}</h1>
+        <button onClick={change}>change it</button>
     </>)
 }
 

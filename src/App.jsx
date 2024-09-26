@@ -7,25 +7,22 @@ const App = () => {
     const [pokemons, setPokemons] = useState([])
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [display, setDisplay] = useState([]);
-    const [paginators, setPaginators] = useState([]);
-    const [multiPage, setMultipagpe] = useState(true)
+    const [paginations, setPaginations] = useState({display:[], paginators:[], multiPage:true})
 
 
     function pagination(x) {
         let setPage = (x - 1) * 20
-        setDisplay(() => {
+        setPaginations((prev) => {
             let arr = [];
             for (let i = setPage; i < setPage + 20; i++) {
                 if (pokemons[i] === undefined) {
                     break;
                 }
-                console.log(pokemons[i])
                 arr.push(
                     pokemons[i]
                 )
             }
-            return arr
+            return {...prev, display:arr}
         })
     }
 
@@ -49,7 +46,7 @@ const App = () => {
                 const result = await res.json();
                 setPokemons(result.results)
                 next(result)
-                setDisplay(result.results)
+                setPaginations(prev=>({...prev,display:result.results}))
             }
             fetchData()
         }
@@ -60,7 +57,7 @@ const App = () => {
 
     useEffect(() => {
         setData(pokemons)
-        setPaginators(() => {
+        setPaginations(prev => {
             let arr = []
             for (let i = (Math.floor(pokemons.length / 20)) + 1; i > 0; i--) {
                 arr.push(
@@ -73,7 +70,7 @@ const App = () => {
                     </span>
                 )
             }
-            return arr.reverse()
+            return {...prev, paginators:arr.reverse()}
         })
 
     }, [pokemons])
@@ -81,12 +78,12 @@ const App = () => {
 
     return (
         <div>
-            <button className='view' onClick={()=>setMultipagpe(!multiPage)}>{multiPage?'single page view':'multipage view'}</button>
-            <SearchBar pokemons={pokemons} loading={loading} setData={setData} setPage={setMultipagpe} />
+            <button className='view' onClick={()=>setPaginations(prev=>({...prev, multiPage:!prev.multiPage}))}>{paginations.multiPage?'single page view':'multipage view'}</button>
+            <SearchBar pokemons={pokemons} loading={loading} setData={setData} setPage={setPaginations} />
             <div className='base-card'>
                 {
-                    multiPage ?
-                        display.map(pokemon => {
+                    paginations.multiPage ?
+                        paginations.display.map(pokemon => {
                             return <Card key={pokemon.url} url={pokemon.url} />
                         })
                         :
@@ -97,7 +94,7 @@ const App = () => {
                         }) : <h1 style={{color:'red'}} className='noPokemon'>Whoops! the Pokeball is empty.</h1>
                 }
             </div>
-            {multiPage && paginators}
+            {paginations.multiPage && paginations.paginators}
 
         </div>
     )

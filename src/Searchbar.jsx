@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 const SearchBar = ({ pokemons, loading, setData, setPage }) => {
     let [search, setSearch] = useState('');
     let [memoPage, setMemoPage] = useState(null);
@@ -7,8 +7,8 @@ const SearchBar = ({ pokemons, loading, setData, setPage }) => {
         setSearch(new RegExp(`${(e.target.value).toLowerCase()}`));
         if (e.target.value.length === 0) {
             setData(pokemons)
-            setPage(() => {
-                return memoPage
+            setPage(prev => {
+                return {...prev, multiPage:memoPage}
             })
         }
     }
@@ -20,8 +20,8 @@ const SearchBar = ({ pokemons, loading, setData, setPage }) => {
             })
         })
         setPage(prev => {
-            setMemoPage(prev)
-            return false
+            setMemoPage(prev.multiPage)
+            return {...prev, multiPage:false}
         })
     }
 
