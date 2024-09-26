@@ -4,16 +4,15 @@
     box-sizing: border-box;
 }
 
-html {
-    background-color: black;
-}
-
 body{
     background-color: yellow;
 }
 
 .searchBase{
     display: flex;
+    margin: 10px auto;
+    justify-content: center;
+    width: 80%;
 }
 
 .search{
@@ -26,7 +25,7 @@ body{
     border: none;
     background-color: #065f2e;
     color: lime;
-    flex: 1 1 90%;
+    flex: 2 1 auto;
 }
 
 .search:focus{
@@ -37,11 +36,11 @@ body{
 .button{
     background-color: chartreuse;
     color: black;
-    padding: .98rem 3rem;
+    /* padding: .98rem 3rem; */
     border: none;
     font-size: 1.2rem;
     font-weight: 800;
-    flex: 1 1 10%;
+    flex: .5 1 30%;
 }
 
 .base-card {
@@ -49,13 +48,15 @@ body{
     background-color: yellow;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     color: white;
     font-family: calibri;
 }
 
 .card {
-    flex: 0 1 14rem;
+    flex: 0 1 10vw;
+    /* width: 30vw; */
     background-color: #065f2e;
     box-shadow: 1px 1px 10px #00000050;
     border-radius: 10px;
@@ -67,7 +68,7 @@ body{
 }
 
 .img {
-    flex: 1 1 14rem;
+    flex: 1 1 10rem;
     width: 20rem;
     object-fit: cover;
     background-color: yellowgreen;

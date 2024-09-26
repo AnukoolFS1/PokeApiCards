@@ -18,8 +18,6 @@ const App = () => {
                 return search.test(e.name)
             })
         })
-        console.log(data)
-        console.log(search)
     }
 
     useEffect(() => {
@@ -36,7 +34,7 @@ const App = () => {
         }
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         setData(pokemons)
     }, [pokemons])
     return (
@@ -47,7 +45,7 @@ const App = () => {
             </div>
             <div className='base-card'>
                 {data.map(pokemon => {
-                    
+
                     return (
                         <Card key={pokemon.url} url={pokemon.url} />
                     )
