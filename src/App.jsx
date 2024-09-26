@@ -10,6 +10,9 @@ const App = () => {
 
     const searchBar = (e) => {
         setSearch(new RegExp(`${(e.target.value).toLowerCase()}`));
+        if(e.target.value.length === 0){
+            setData(pokemons)
+        }
     }
 
     const submitSearch = () => {
