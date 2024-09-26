@@ -40,7 +40,7 @@ const Card = ({ url }) => {
                 <h1>{data?.name}</h1>
                 <p> <strong>Poke Type : </strong> <span className="pokeDetails"> {capitalize(pokeType)} type pokemon</span> </p>
                 <p> <strong>Height : </strong> <span className="pokeDetails"> {data.height / 10} m</span> </p>
-                <p> <strong>Weight : </strong> <span className="pokeDatails"> {data.weight / 10} kg</span> </p>
+                <p> <strong>Weight : </strong> <span className="pokeDetails"> {data.weight / 10} kg</span> </p>
                 <p> <strong>Moves : </strong> <span className="pokeDetails"> {moves.join(', ')} </span></p>
             </div>
         </div>
