@@ -82,7 +82,7 @@ const App = () => {
     return (
         <div>
             <button className='view' onClick={()=>setMultipagpe(!multiPage)}>{multiPage?'single page view':'multipage view'}</button>
-            <SearchBar pokemons={pokemons} loading={loading} setData={setData} />
+            <SearchBar pokemons={pokemons} loading={loading} setData={setData} setPage={setMultipagpe} />
             <div className='base-card'>
                 {
                     multiPage ?
@@ -97,7 +97,7 @@ const App = () => {
                         })
                 }
             </div>
-            {paginators}
+            {multiPage && paginators}
 
         </div>
     )
