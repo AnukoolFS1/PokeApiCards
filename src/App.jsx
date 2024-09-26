@@ -90,11 +90,11 @@ const App = () => {
                             return <Card key={pokemon.url} url={pokemon.url} />
                         })
                         :
-                        data.map(pokemon => {
+                        data.length>0?data.map(pokemon => {
                             return (
                                 <Card key={pokemon.url} url={pokemon.url} />
                             )
-                        })
+                        }) : <h1 style={{color:'red'}} className='noPokemon'>Whoops! the Pokeball is empty.</h1>
                 }
             </div>
             {multiPage && paginators}
