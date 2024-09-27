@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Card from './Card';
-import SearchBar from './SearchBar';
+import SearchBar from './Searching';
 import './style.css'
 
 const App = () => {
