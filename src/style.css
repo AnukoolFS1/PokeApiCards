@@ -4,18 +4,18 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #fade82;
 }
 
-.searchBase{
+.searchBase {
     display: flex;
     margin: 10px auto;
     justify-content: center;
     width: 80%;
 }
 
-.search{
+.search {
     height: 5vh;
     outline: none;
     padding: 2rem 1rem;
@@ -28,12 +28,12 @@ body{
     flex: 2 1 auto;
 }
 
-.search:focus{
+.search:focus {
     background-color: #7a9a1e;
     color: #f5f5f5;
 }
 
-.button{
+.button {
     background-color: #8a9a5b;
     color: white;
     padding: 0rem 2rem;
@@ -55,7 +55,6 @@ body{
 
 
 .base-card {
-    padding: 10px 15px 10px 10px;
     background-color: #f8de8c;
     display: flex;
     flex-wrap: wrap;
@@ -98,18 +97,17 @@ body{
     text-transform: uppercase;
 }
 
-.paginators{
+.paginators {
     display: inline-block;
     padding: 10px 15px;
     margin: 5px 5px;
     background-color: #008080;
     color: white;
     cursor: pointer;
-    /* font-size: 20px; */
     font: 20px 700;
 }
 
-.view{
+.view {
     position: fixed;
     width: 5vw;
     bottom: 20%;
@@ -128,4 +126,39 @@ body{
     border-bottom: 1px solid #f5d17f;
     color: white;
     font-family: calibri;
+}
+
+
+@media (max-width:420px) and (min-width:290px) {
+    .app-header {
+        width: 100%;
+    }
+
+    .searchBase {
+        width: 95%;
+    }
+    
+    .search {
+        padding: 1.2rem .5rem;
+        font-size: 1rem;
+    }
+
+    .button {
+        padding: 0rem .5rem;
+        font-size: .9rem;
+        font-weight: 100;
+    }
+
+    .card {
+        width: 90vw;
+    }
+
+    .img {
+        width: 16rem;
+    }
+    .view {
+        width: 11vw;
+        font-size: .6rem;
+        padding: 4px 0px;
+    }
 }
