@@ -7,7 +7,7 @@ const App = () => {
     const [pokemons, setPokemons] = useState([])
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [paginations, setPaginations] = useState({display:[], paginators:[], multiPage:true})
+    const [paginations, setPaginations] = useState({ display: [], paginators: [], multiPage: true })
 
 
     function pagination(x) {
@@ -22,7 +22,7 @@ const App = () => {
                     pokemons[i]
                 )
             }
-            return {...prev, display:arr}
+            return { ...prev, display: arr }
         })
     }
 
@@ -46,7 +46,7 @@ const App = () => {
                 const result = await res.json();
                 setPokemons(result.results)
                 next(result)
-                setPaginations(prev=>({...prev,display:result.results}))
+                setPaginations(prev => ({ ...prev, display: result.results }))
             }
             fetchData()
         }
@@ -70,7 +70,7 @@ const App = () => {
                     </span>
                 )
             }
-            return {...prev, paginators:arr.reverse()}
+            return { ...prev, paginators: arr.reverse() }
         })
 
     }, [pokemons])
@@ -78,7 +78,11 @@ const App = () => {
 
     return (
         <div>
-            <button className='view' onClick={()=>setPaginations(prev=>({...prev, multiPage:!prev.multiPage}))}>{paginations.multiPage?'single page view':'multipage view'}</button>
+            <header className="app-header">
+                <h1>Pokémon Explorer</h1>
+                <p>Explore Pokémon, their stats, types, and moves easily!</p>
+            </header>
+            <button className='view' onClick={() => setPaginations(prev => ({ ...prev, multiPage: !prev.multiPage }))}>{paginations.multiPage ? 'single page view' : 'multipage view'}</button>
             <SearchBar pokemons={pokemons} loading={loading} setData={setData} setPage={setPaginations} />
             <div className='base-card'>
                 {
@@ -87,13 +91,17 @@ const App = () => {
                             return <Card key={pokemon.url} url={pokemon.url} />
                         })
                         :
-                        data.length>0?data.map(pokemon => {
+                        data.length > 0 ? data.map(pokemon => {
                             return (
                                 <Card key={pokemon.url} url={pokemon.url} />
                             )
-                        }) : <h1 style={{color:'red'}} className='noPokemon'>Whoops! the Pokeball is empty.</h1>
+                        }) : <h1 style={{ color: 'red' }} className='noPokemon'>Whoops! the Pokeball is empty.</h1>
                 }
             </div>
+            {paginations.multiPage ?
+                <p style={{fontFamily:"calibri"}}>Click on a page number to view more Pokémon.</p>
+                : null
+            }
             {paginations.multiPage && paginations.paginators}
 
         </div>

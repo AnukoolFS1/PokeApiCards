@@ -1,7 +1,7 @@
 import { useState} from 'react'
 const SearchBar = ({ pokemons, loading, setData, setPage }) => {
     let [search, setSearch] = useState('');
-    let [memoPage, setMemoPage] = useState(null);
+    let [memoPage, setMemoPage] = useState(true);
 
     const searchBar = (e) => {
         setSearch(new RegExp(`${(e.target.value).toLowerCase()}`));
@@ -14,15 +14,18 @@ const SearchBar = ({ pokemons, loading, setData, setPage }) => {
     }
 
     const submitSearch = () => {
+        if(search.length === 0) return
         setData(() => {
             return pokemons.filter(e => {
                 return search.test(e.name)
             })
         })
-        setPage(prev => {
-            setMemoPage(prev.multiPage)
-            return {...prev, multiPage:false}
-        })
+        try{
+            setPage(prev => {
+                setMemoPage(prev.multiPage)
+                return {...prev, multiPage:false}
+            })
+        }catch{}
     }
 
     return (

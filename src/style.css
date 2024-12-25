@@ -5,7 +5,7 @@
 }
 
 body{
-    background-color: yellow;
+    background-color: #fade82;
 }
 
 .searchBase{
@@ -23,40 +23,51 @@ body{
     font-family: system-ui;
     font-weight: 600;
     border: none;
-    background-color: #065f2e;
-    color: lime;
+    background-color: #92b724;
+    color: #ffffff;
     flex: 2 1 auto;
 }
 
 .search:focus{
-    background-color: rgb(26, 138, 84);
-    color: white;
+    background-color: #7a9a1e;
+    color: #f5f5f5;
 }
 
 .button{
-    background-color: yellowgreen;
+    background-color: #8a9a5b;
     color: white;
     padding: 0rem 2rem;
     border: none;
     font-size: 1.2rem;
     font-weight: 800;
     flex: .5 1 10%;
+    transition: .1s all linear;
 }
+
+.button:hover {
+    background-color: #ffa600;
+}
+
+.button:active {
+    background-color: #a66b00;
+    transform: scale(0.9);
+}
+
 
 .base-card {
     padding: 10px 15px 10px 10px;
-    background-color: yellow;
+    background-color: #f8de8c;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    color: white;
+    color: #000000;
     font-family: calibri;
 }
 
 .card {
     flex: 0 1 10vw;
-    background-color: #065f2e;
+    background-color: #e6ee9c;
     box-shadow: 1px 1px 10px #00000050;
     border-radius: 10px;
 }
@@ -70,7 +81,7 @@ body{
     flex: 1 1 10rem;
     width: 20rem;
     object-fit: cover;
-    background-color: yellowgreen;
+    background-color: #d3e253;
     border-radius: 9px 9px 2px 2px;
 }
 
@@ -80,7 +91,7 @@ body{
 
 .pokeDetails {
     font-weight: 100;
-    color: lime;
+    color: black;
 }
 
 .details>h1 {
@@ -91,7 +102,7 @@ body{
     display: inline-block;
     padding: 10px 15px;
     margin: 5px 5px;
-    background-color: brown;
+    background-color: #008080;
     color: white;
     cursor: pointer;
     /* font-size: 20px; */
@@ -102,10 +113,19 @@ body{
     position: fixed;
     width: 5vw;
     bottom: 20%;
-    background-color: slateblue;
+    background-color: #cc8400;
     color: white;
     padding: 8px 12px;
     border: none;
     right: 0;
     white-space: wrap;
+}
+
+.app-header {
+    text-align: center;
+    background-color: #9e9427;
+    padding: 1rem;
+    border-bottom: 1px solid #f5d17f;
+    color: white;
+    font-family: calibri;
 }
